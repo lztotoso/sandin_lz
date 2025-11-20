@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://nbp287neo663"]
+
+[ext_resource type="Texture2D" uid="uid://tgxhdyl146nf" path="res://personagem parado.png_0001.png" id="1_114o1"]
+[ext_resource type="Script" uid="uid://cnoceodc58qco" path="res://personagem.gd" id="1_gn376"]
+[ext_resource type="Texture2D" uid="uid://bal6rg043g84w" path="res://personagem parado.png_0002.png" id="2_gn376"]
+[ext_resource type="Texture2D" uid="uid://byxgngccjjf7l" path="res://personagem parado.png_0003.png" id="3_p7k75"]
+[ext_resource type="Texture2D" uid="uid://d14ombus3f7h" path="res://personagem parado.png_0004.png" id="4_nvt02"]
+[ext_resource type="Texture2D" uid="uid://c6vdw83bkt0tl" path="res://personagem parado.png_0005.png" id="5_kk4oa"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ogp2y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_114o1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_gn376")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_p7k75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nvt02")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kk4oa")
+}],
+"loop": true,
+"name": &"parado",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gn376"]
+size = Vector2(124.75, 141)
+
+[node name="Personagem" type="CharacterBody2D"]
+script = ExtResource("1_gn376")
+
+[node name="Frames_personagem" type="AnimatedSprite2D" parent="."]
+position = Vector2(179, 653)
+sprite_frames = SubResource("SpriteFrames_ogp2y")
+animation = &"parado"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(165.625, 410.5)
+shape = SubResource("RectangleShape2D_gn376")
