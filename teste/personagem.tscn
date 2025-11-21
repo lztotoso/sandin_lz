@@ -76,17 +76,19 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gn376"]
-size = Vector2(124.75, 141)
+size = Vector2(25, 34.625)
 
 [node name="Personagem" type="CharacterBody2D"]
 script = ExtResource("1_gn376")
 
 [node name="Frames_personagem" type="AnimatedSprite2D" parent="."]
-position = Vector2(179, 653)
+position = Vector2(80, 158)
+scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_ogp2y")
-animation = &"parado"
-frame_progress = 0.8348954
+animation = &"andando"
+frame = 6
+frame_progress = 0.45494914
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(165.625, 410.5)
+position = Vector2(78.5, 109.6875)
 shape = SubResource("RectangleShape2D_gn376")
