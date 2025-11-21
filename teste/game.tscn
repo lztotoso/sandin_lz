@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://ydgkv3omwcyw"]
+[gd_scene load_steps=7 format=4 uid="uid://ydgkv3omwcyw"]
 
 [ext_resource type="Texture2D" uid="uid://m8ljftgpeaub" path="res://Cenarios/cenarioum/PNG/Tileset.png" id="1_e2o6t"]
 [ext_resource type="PackedScene" uid="uid://nbp287neo663" path="res://personagem.tscn" id="2_e2o6t"]
+[ext_resource type="PackedScene" uid="uid://mr37b628r1bt" path="res://oponente_1.tscn" id="3_feb5d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_feb5d"]
 texture = ExtResource("1_e2o6t")
@@ -179,13 +180,25 @@ texture_region_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_feb5d")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_feb5d"]
+size = Vector2(78, 727)
+
 [node name="Game" type="Node2D"]
 position = Vector2(3, 272)
 
 [node name="Personagem" parent="." instance=ExtResource("2_e2o6t")]
-position = Vector2(90, 191)
+position = Vector2(91, 189)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(4, 0)
 tile_map_data = PackedByteArray("AAAAABIAAAAAAAsAAAAAABQAAAAAAAoAAAABABQAAAABAAoAAAACABIAAAAAAAsAAAACABQAAAACAAoAAAAEABIAAAAAAAsAAAAEABQAAAAAAAoAAAAFABQAAAABAAoAAAAGABIAAAAAAAsAAAAGABQAAAACAAoAAAAIABIAAAAAAAsAAAAIABQAAAAAAAoAAAAJABQAAAABAAoAAAAKABIAAAAAAAsAAAAKABQAAAACAAoAAAAMABQAAAAAAAoAAAANABQAAAABAAoAAAAOABQAAAACAAoAAAAQABQAAAAAAAoAAAARABQAAAABAAoAAAASABQAAAACAAoAAAAUABQAAAAAAAoAAAAVABQAAAABAAoAAAAWABQAAAACAAoAAAAYABQAAAAAAAoAAAAZABQAAAABAAoAAAAaABQAAAACAAoAAAAcABQAAAAAAAoAAAAdABQAAAABAAoAAAAeABQAAAACAAoAAAAfABQAAAAAAAoAAAAgABQAAAABAAoAAAAhABQAAAACAAoAAAAjABQAAAAAAAoAAAAkABQAAAABAAoAAAAlABQAAAACAAoAAAAnABQAAAAAAAoAAAAoABQAAAABAAoAAAApABQAAAACAAoAAAAMABIAAAAAAAsAAAAOABIAAAAAAAsAAAAQABIAAAAAAAsAAAASABIAAAAAAAsAAAAUABIAAAAAAAsAAAAWABIAAAAAAAsAAAAYABIAAAAAAAsAAAAaABIAAAAAAAsAAAAcABIAAAAAAAsAAAAeABIAAAAAAAsAAAAgABIAAAAAAAsAAAAiABIAAAAAAAsAAAAkABIAAAAAAAsAAAAmABIAAAAAAAsAAAAoABIAAAAAAAsAAAAqABIAAAAAAAsAAAAUAA8AAAANAAcAAAAVAA8AAAAOAAcAAAAWAA8AAAAPAAcAAAAjAA8AAAANAAcAAAAkAA8AAAAOAAcAAAAlAA8AAAAPAAcAAAAcAA8AAAAHAAgAAAArABQAAAAAAAoAAAAsABQAAAABAAoAAAAtABQAAAACAAoAAAAvABQAAAAAAAoAAAAwABQAAAABAAoAAAAxABQAAAACAAoAAAAzABQAAAAAAAoAAAA0ABQAAAABAAoAAAAsABIAAAAAAAsAAAAuABIAAAAAAAsAAAAwABIAAAAAAAsAAAAyABIAAAAAAAsAAAA0ABIAAAAAAAsAAAA=")
 tile_set = SubResource("TileSet_fc0e3")
+
+[node name="Oponente1" parent="." instance=ExtResource("3_feb5d")]
+position = Vector2(638, 163)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(871, 89)
+shape = SubResource("RectangleShape2D_feb5d")
