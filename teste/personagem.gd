@@ -54,6 +54,6 @@ func update_animation() -> void:
 		else:
 			anim_sprite.play("fall")
 	elif velocity.x != 0:
-		anim_sprite.play("run")
+		anim_sprite.play("andando")
 	else:
 		anim_sprite.play("parado")

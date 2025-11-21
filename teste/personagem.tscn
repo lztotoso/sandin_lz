@@ -1,14 +1,59 @@
-[gd_scene load_steps=9 format=3 uid="uid://nbp287neo663"]
+[gd_scene load_steps=19 format=3 uid="uid://nbp287neo663"]
 
 [ext_resource type="Texture2D" uid="uid://tgxhdyl146nf" path="res://personagem parado.png_0001.png" id="1_114o1"]
 [ext_resource type="Script" uid="uid://cnoceodc58qco" path="res://personagem.gd" id="1_gn376"]
 [ext_resource type="Texture2D" uid="uid://bal6rg043g84w" path="res://personagem parado.png_0002.png" id="2_gn376"]
+[ext_resource type="Texture2D" uid="uid://ieev8v86bc5w" path="res://personagem andando.png_0001.png" id="2_q3kau"]
+[ext_resource type="Texture2D" uid="uid://dr4basjc27gjg" path="res://personagem andando.png_0002.png" id="3_cxvj2"]
 [ext_resource type="Texture2D" uid="uid://byxgngccjjf7l" path="res://personagem parado.png_0003.png" id="3_p7k75"]
 [ext_resource type="Texture2D" uid="uid://d14ombus3f7h" path="res://personagem parado.png_0004.png" id="4_nvt02"]
+[ext_resource type="Texture2D" uid="uid://dkollcejnx2a6" path="res://personagem andando.png_0003.png" id="4_tgslo"]
 [ext_resource type="Texture2D" uid="uid://c6vdw83bkt0tl" path="res://personagem parado.png_0005.png" id="5_kk4oa"]
+[ext_resource type="Texture2D" uid="uid://bqysjl4rnuuw8" path="res://personagem andando.png_0004.png" id="5_qtdk8"]
+[ext_resource type="Texture2D" uid="uid://8hbtavfxwce" path="res://personagem andando.png_0005.png" id="6_cidpc"]
+[ext_resource type="Texture2D" uid="uid://bhoii6qhrgm71" path="res://personagem andando.png_0006.png" id="7_4cdg6"]
+[ext_resource type="Texture2D" uid="uid://iy51yykv6662" path="res://personagem andando.png_0007.png" id="8_2jceu"]
+[ext_resource type="Texture2D" uid="uid://dii2g823ag04y" path="res://personagem andando.png_0008.png" id="9_jnbs7"]
+[ext_resource type="Texture2D" uid="uid://2v0n0msods5e" path="res://personagem andando.png_0009.png" id="10_en6ei"]
+[ext_resource type="Texture2D" uid="uid://bmt7e20y2jjcq" path="res://personagem andando.png_0010.png" id="11_d7snr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ogp2y"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_q3kau")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cxvj2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tgslo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qtdk8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cidpc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4cdg6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_2jceu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_jnbs7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_en6ei")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_d7snr")
+}],
+"loop": true,
+"name": &"andando",
+"speed": 7.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_114o1")
@@ -27,7 +72,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"parado",
-"speed": 5.0
+"speed": 3.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gn376"]
@@ -40,6 +85,7 @@ script = ExtResource("1_gn376")
 position = Vector2(179, 653)
 sprite_frames = SubResource("SpriteFrames_ogp2y")
 animation = &"parado"
+frame_progress = 0.8348954
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(165.625, 410.5)
