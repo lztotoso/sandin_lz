@@ -17,6 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://2v0n0msods5e" path="res://personagem andando.png_0009.png" id="10_en6ei"]
 [ext_resource type="Texture2D" uid="uid://bmt7e20y2jjcq" path="res://personagem andando.png_0010.png" id="11_d7snr"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gn376"]
+size = Vector2(59.65625, 71.78906)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ogp2y"]
 animations = [{
 "frames": [{
@@ -75,20 +78,19 @@ animations = [{
 "speed": 3.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gn376"]
-size = Vector2(25, 34.625)
-
 [node name="Personagem" type="CharacterBody2D"]
+position = Vector2(73, 52)
 script = ExtResource("1_gn376")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-0.171875, -2.1054688)
+shape = SubResource("RectangleShape2D_gn376")
+
 [node name="Frames_personagem" type="AnimatedSprite2D" parent="."]
-position = Vector2(80, 158)
-scale = Vector2(0.2, 0.2)
+position = Vector2(8, 119)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_ogp2y")
 animation = &"andando"
-frame = 6
-frame_progress = 0.45494914
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(78.5, 109.6875)
-shape = SubResource("RectangleShape2D_gn376")
+frame = 3
+frame_progress = 0.9461157
