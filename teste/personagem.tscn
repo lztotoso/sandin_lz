@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://nbp287neo663"]
+[gd_scene load_steps=40 format=3 uid="uid://nbp287neo663"]
 
 [ext_resource type="Script" uid="uid://cnoceodc58qco" path="res://personagem.gd" id="1_gn376"]
 [ext_resource type="Texture2D" uid="uid://2stemcwuexhw" path="res://Samurai/Walk.png" id="2_k0c8s"]
@@ -91,29 +91,9 @@ region = Rect2(512, 0, 128, 128)
 atlas = ExtResource("5_kk4oa")
 region = Rect2(640, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k0c8s"]
-atlas = ExtResource("2_vvf27")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s3elh"]
-atlas = ExtResource("2_vvf27")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_114o1"]
-atlas = ExtResource("2_vvf27")
-region = Rect2(256, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gn376"]
-atlas = ExtResource("2_vvf27")
-region = Rect2(384, 0, 128, 128)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_q3kau"]
 atlas = ExtResource("2_vvf27")
-region = Rect2(512, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cxvj2"]
-atlas = ExtResource("2_vvf27")
-region = Rect2(640, 0, 128, 128)
+region = Rect2(484, 0, 121, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tgslo"]
 atlas = ExtResource("4_s3elh")
@@ -240,22 +220,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k0c8s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s3elh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_114o1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gn376")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_q3kau")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cxvj2")
 }],
 "loop": true,
 "name": &"parado",
@@ -303,7 +268,7 @@ position = Vector2(-5.5, 1)
 shape = SubResource("RectangleShape2D_gn376")
 
 [node name="Frames_personagem" type="AnimatedSprite2D" parent="."]
-position = Vector2(10, -57)
+position = Vector2(9, -59)
 scale = Vector2(2.0680747, 1.8613281)
 sprite_frames = SubResource("SpriteFrames_ogp2y")
-animation = &"morrendo"
+animation = &"parado"
