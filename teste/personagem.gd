@@ -7,7 +7,7 @@ var gravity: float = 900.0
 
 @onready var anim_sprite: AnimatedSprite2D = $Frames_personagem
 
-var facing_direction := 1
+var facing_direction = 1
 var is_running: bool = false
 var is_attacking: bool = false
 var is_defending: bool = false
@@ -68,9 +68,9 @@ func _physics_process(delta: float) -> void:
 	if is_dead:
 		return
 
-	var direction := Vector2.ZERO
+	var direction = Vector2.ZERO
 
-	if not is_dashing:
+	if not is_dashing and not (is_attacking and is_on_floor()):
 		if Input.is_action_pressed("mv_direita"):
 			direction.x += 1
 			facing_direction = 1
@@ -78,28 +78,33 @@ func _physics_process(delta: float) -> void:
 			direction.x -= 1
 			facing_direction = -1
 
-	is_running = Input.is_action_pressed("correr") and not is_dashing
+	is_running = Input.is_action_pressed("correr") and not is_dashing and not (is_attacking and is_on_floor())
 	direction = direction.normalized()
 
 	if is_dashing:
 		velocity.x = facing_direction * dash_speed
-	else:
+	elif not (is_attacking and is_on_floor()):
 		if is_running:
 			velocity.x = direction.x * run_speed
 		else:
 			velocity.x = direction.x * speed
 
-	if not is_on_floor():
+	# Gravidade
+	if is_on_floor():
+		if velocity.y > 0:
+			velocity.y = 0
+	else:
 		velocity.y += gravity * delta
+		handle_fall_animation()
 
-	if Input.is_action_just_pressed("pulo") and is_on_floor() and not is_dashing:
+	if Input.is_action_just_pressed("pulo") and is_on_floor() and not is_dashing and not (is_attacking and is_on_floor()):
 		anim_sprite.play("pulando")
 		jump_buffer_timer.start(jump_anim_delay)
 
 	if not is_dashing:
 		handle_attack_input()
 
-	if Input.is_action_just_pressed("defesa") and not is_defending and not is_dashing:
+	if Input.is_action_just_pressed("defesa") and not is_defending and not is_dashing and not (is_attacking and is_on_floor()):
 		start_defense()
 
 	handle_dash_input()
@@ -125,19 +130,23 @@ func handle_attack_input() -> void:
 
 func start_attack() -> void:
 	is_attacking = true
-	var attack_name := ""
+	# Só para o personagem no chão
+	if is_on_floor():
+		velocity.x = 0
+
+	var attack_name = ""
 	if selected_attack == 1:
 		attack_name = "ataque1"
 	elif selected_attack == 2:
 		attack_name = "ataque2"
 
-	var frames := anim_sprite.sprite_frames
+	var frames = anim_sprite.sprite_frames
 	if frames and frames.has_animation(attack_name):
 		frames.set_animation_loop(attack_name, false)
 		anim_sprite.play(attack_name)
-		var frame_count := frames.get_frame_count(attack_name)
-		var anim_speed := frames.get_animation_speed(attack_name)
-		var duration := 0.0
+		var frame_count = frames.get_frame_count(attack_name)
+		var anim_speed = frames.get_animation_speed(attack_name)
+		var duration = 0.0
 		if anim_speed > 0.0:
 			duration = float(frame_count) / anim_speed
 		else:
@@ -148,13 +157,14 @@ func start_attack() -> void:
 
 func start_defense() -> void:
 	is_defending = true
-	var frames := anim_sprite.sprite_frames
+	velocity.x = 0
+	var frames = anim_sprite.sprite_frames
 	if frames and frames.has_animation("defendendo"):
 		frames.set_animation_loop("defendendo", false)
 		anim_sprite.play("defendendo")
-		var frame_count := frames.get_frame_count("defendendo")
-		var anim_speed := frames.get_animation_speed("defendendo")
-		var duration := 0.0
+		var frame_count = frames.get_frame_count("defendendo")
+		var anim_speed = frames.get_animation_speed("defendendo")
+		var duration = 0.0
 		if anim_speed > 0.0:
 			duration = float(frame_count) / anim_speed
 		else:
@@ -164,10 +174,10 @@ func start_defense() -> void:
 		defense_release_timer.start(0.01)
 
 func handle_dash_input() -> void:
-	if not can_dash:
+	if not can_dash or is_attacking or is_defending:
 		return
 
-	var now := Time.get_ticks_msec() / 1000.0
+	var now = Time.get_ticks_msec() / 1000.0
 
 	if Input.is_action_just_pressed("mv_direita"):
 		if (now - last_right_press_time < dash_interval) or (now - last_right_press_time == dash_interval):
@@ -187,8 +197,14 @@ func start_dash(direction: int) -> void:
 	facing_direction = direction
 	dash_timer.start(dash_duration)
 	dash_cooldown_timer.start(dash_cooldown)
-	if anim_sprite.sprite_frames.has_animation("dash"):
-		anim_sprite.play("dash")
+
+	# Escolhe animação dependendo se está no chão ou no ar
+	if is_on_floor():
+		if anim_sprite.sprite_frames.has_animation("dash"):
+			anim_sprite.play("dash")
+	else:
+		if anim_sprite.sprite_frames.has_animation("dash_ar"):
+			anim_sprite.play("dash_ar")
 
 func _end_dash() -> void:
 	is_dashing = false
@@ -196,7 +212,7 @@ func _end_dash() -> void:
 func _reset_dash_cooldown() -> void:
 	can_dash = true
 
-func _on_animation_finished(anim_name: StringName) -> void:
+func _on_animation_finished(anim_name: String) -> void:
 	if anim_name == "ataque1" or anim_name == "ataque2":
 		is_attacking = false
 		if attack_release_timer.time_left > 0.0:
@@ -205,7 +221,7 @@ func _on_animation_finished(anim_name: StringName) -> void:
 		is_defending = false
 		if defense_release_timer.time_left > 0.0:
 			defense_release_timer.stop()
-	if anim_name == "dash":
+	if anim_name == "dash" or anim_name == "dash_ar":
 		is_dashing = false
 
 func _release_attack_failsafe() -> void:
@@ -227,7 +243,15 @@ func update_animation() -> void:
 			anim_sprite.play("dano")
 		return
 
+	# Corrigido: ataque não bloqueia pulo/queda
 	if is_attacking:
+		if not is_on_floor():
+			if velocity.y < 0:
+				if not anim_sprite.animation == "pulando":
+					anim_sprite.play("pulando")
+			else:
+				if not anim_sprite.animation == "caindo":
+					anim_sprite.play("caindo")
 		return
 
 	if is_defending:
@@ -241,8 +265,7 @@ func update_animation() -> void:
 			if not anim_sprite.animation == "pulando":
 				anim_sprite.play("pulando")
 		else:
-			if not anim_sprite.animation == "caindo":
-				anim_sprite.play("caindo")
+			handle_fall_animation()
 		return
 
 	if velocity.x == 0:
@@ -255,6 +278,11 @@ func update_animation() -> void:
 		else:
 			if not anim_sprite.animation == "andando":
 				anim_sprite.play("andando")
+
+func handle_fall_animation() -> void:
+	if not is_on_floor() and velocity.y > 0:
+		if not anim_sprite.animation == "caindo":
+			anim_sprite.play("caindo")
 
 func reset_to_start() -> void:
 	global_position = start_position

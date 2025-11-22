@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://nbp287neo663"]
+[gd_scene load_steps=71 format=3 uid="uid://nbp287neo663"]
 
 [ext_resource type="Script" uid="uid://cnoceodc58qco" path="res://personagem.gd" id="1_gn376"]
 [ext_resource type="Texture2D" uid="uid://2stemcwuexhw" path="res://Samurai/Walk.png" id="2_k0c8s"]
@@ -87,6 +87,26 @@ region = Rect2(384, 0, 128, 128)
 atlas = ExtResource("4_ogp2y")
 region = Rect2(512, 0, 128, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0klp"]
+atlas = ExtResource("4_s3elh")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxxbe"]
+atlas = ExtResource("4_s3elh")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8rcp"]
+atlas = ExtResource("4_s3elh")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sb2bp"]
+atlas = ExtResource("4_s3elh")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atga0"]
+atlas = ExtResource("4_s3elh")
+region = Rect2(1024, 0, 128, 128)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_x84cc"]
 atlas = ExtResource("5_qaj70")
 region = Rect2(0, 0, 128, 128)
@@ -146,6 +166,10 @@ region = Rect2(256, 0, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_kcxbo"]
 atlas = ExtResource("5_fgyiu")
 region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hw7j2"]
+atlas = ExtResource("4_s3elh")
+region = Rect2(640, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_73hqi"]
 atlas = ExtResource("4_nvt02")
@@ -292,6 +316,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_j0klp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxxbe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n8rcp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sb2bp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atga0")
+}],
+"loop": true,
+"name": &"caindo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_x84cc")
 }, {
 "duration": 1.0,
@@ -349,6 +393,14 @@ animations = [{
 "loop": true,
 "name": &"dash",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hw7j2")
+}],
+"loop": true,
+"name": &"dash_ar",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -437,4 +489,6 @@ shape = SubResource("RectangleShape2D_gn376")
 position = Vector2(9, -59)
 scale = Vector2(2.0680747, 1.8613281)
 sprite_frames = SubResource("SpriteFrames_ogp2y")
-animation = &"correndo"
+animation = &"dash_ar"
+
+[node name="Camera2D" type="Camera2D" parent="."]
