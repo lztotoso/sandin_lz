@@ -381,10 +381,10 @@ position = Vector2(79, 55)
 shape = SubResource("RectangleShape2D_iiobb")
 
 [node name="Frames_oponente" type="AnimatedSprite2D" parent="."]
-position = Vector2(85, 17)
-scale = Vector2(1.5546875, 1.5)
+position = Vector2(79.00001, -5)
+scale = Vector2(2.0175781, 1.859375)
 sprite_frames = SubResource("SpriteFrames_luqdr")
-animation = &"parado"
+animation = &"correndo"
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(10, 0)
