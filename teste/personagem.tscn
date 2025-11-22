@@ -478,17 +478,22 @@ animations = [{
 }]
 
 [node name="Personagem" type="CharacterBody2D"]
-position = Vector2(73, 52)
+position = Vector2(45, 273)
 script = ExtResource("1_gn376")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-5.5, 1)
+visible = false
+position = Vector2(431, 0)
 shape = SubResource("RectangleShape2D_gn376")
 
 [node name="Frames_personagem" type="AnimatedSprite2D" parent="."]
-position = Vector2(9, -59)
+position = Vector2(419, -41)
 scale = Vector2(2.0680747, 1.8613281)
 sprite_frames = SubResource("SpriteFrames_ogp2y")
 animation = &"dash_ar"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(430, 0)
+limit_left = 0
+limit_bottom = 540
+limit_smoothed = true
