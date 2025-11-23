@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://dvt27d2v6onvq"]
+[gd_scene load_steps=46 format=3 uid="uid://dvt27d2v6onvq"]
 
 [ext_resource type="Texture2D" uid="uid://cvsyf1831d0cr" path="res://PersonagemSanderson/esquelotos/Skeleton_Spearman/Walk.png" id="1_uacuq"]
 [ext_resource type="Texture2D" uid="uid://cmqeln5qayk51" path="res://PersonagemSanderson/esquelotos/Skeleton_Spearman/Run+attack.png" id="2_cowaw"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://ex32qur5uf0i" path="res://PersonagemSanderson/esquelotos/Skeleton_Spearman/Protect.png" id="5_xj8v8"]
 [ext_resource type="Texture2D" uid="uid://06xbqr3suw52" path="res://PersonagemSanderson/esquelotos/Skeleton_Spearman/Dead.png" id="6_qjk8b"]
 [ext_resource type="Texture2D" uid="uid://b4hwb0jkrvlrg" path="res://PersonagemSanderson/esquelotos/Skeleton_Spearman/Idle.png" id="7_745h2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uacuq"]
+size = Vector2(31.5, 70)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dtt88"]
 atlas = ExtResource("1_uacuq")
@@ -300,7 +303,12 @@ animations = [{
 
 [node name="esqueletoUm" type="CharacterBody2D"]
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(59.25, 93)
+shape = SubResource("RectangleShape2D_uacuq")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-106, 75)
+position = Vector2(65, 64)
 sprite_frames = SubResource("SpriteFrames_pmyuq")
-animation = &"defeza"
+animation = &"parado"
+frame_progress = 0.7182017

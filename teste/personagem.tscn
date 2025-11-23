@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://b3mljg7cq60sj" path="res://Samurai/Run.png" id="5_qaj70"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gn376"]
-size = Vector2(69, 118.89453)
+size = Vector2(57, 103)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p7k75"]
 atlas = ExtResource("2_k0c8s")
@@ -478,22 +478,22 @@ animations = [{
 }]
 
 [node name="Personagem" type="CharacterBody2D"]
+z_index = -2
 position = Vector2(45, 273)
 script = ExtResource("1_gn376")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(431, 0)
+position = Vector2(415.5, 5.5)
 shape = SubResource("RectangleShape2D_gn376")
 
 [node name="Frames_personagem" type="AnimatedSprite2D" parent="."]
-position = Vector2(419, -41)
-scale = Vector2(2.0680747, 1.8613281)
+position = Vector2(420, -38)
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_ogp2y")
-animation = &"dash_ar"
+animation = &"parado"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(430, 0)
 limit_left = 0
-limit_bottom = 540
+limit_bottom = 432
 limit_smoothed = true

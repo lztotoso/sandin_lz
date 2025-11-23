@@ -1,0 +1,95 @@
+[gd_scene load_steps=8 format=3 uid="uid://dcqc786kseyei"]
+
+[ext_resource type="Texture2D" uid="uid://crwyke81v7m41" path="res://Fases/5/1.png" id="1_8dqw3"]
+[ext_resource type="Texture2D" uid="uid://b1wlbvwtxorig" path="res://Fases/5/2.png" id="2_3xv5d"]
+[ext_resource type="Texture2D" uid="uid://b3s0raj8yo6d2" path="res://Fases/5/3.png" id="3_fn3an"]
+[ext_resource type="Texture2D" uid="uid://bn2gj8lt682ho" path="res://Fases/5/4.png" id="4_p0e0y"]
+[ext_resource type="Texture2D" uid="uid://cl2k6v0dbqrq8" path="res://Fases/5/5.png" id="5_fcd5i"]
+[ext_resource type="PackedScene" uid="uid://nbp287neo663" path="res://personagem.tscn" id="7_i3ps2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8dqw3"]
+size = Vector2(2322, 27)
+
+[node name="Fase_1" type="Node2D"]
+
+[node name="Personagem" parent="." instance=ExtResource("7_i3ps2")]
+position = Vector2(-235, 247)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="1" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/1"]
+texture_repeat = 2
+scale = Vector2(1, 1.0493827)
+texture = ExtResource("1_8dqw3")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 1152, 432)
+region_filter_clip_enabled = true
+
+[node name="2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 1)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/2"]
+texture_repeat = 2
+scale = Vector2(1, 1.3981482)
+texture = ExtResource("2_3xv5d")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 1152, 324)
+region_filter_clip_enabled = true
+
+[node name="3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 1)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/3"]
+texture_repeat = 2
+scale = Vector2(1, 1.3981482)
+texture = ExtResource("3_fn3an")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 1152, 324)
+region_filter_clip_enabled = true
+
+[node name="4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.4, 1)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/4"]
+texture_repeat = 2
+scale = Vector2(1, 1.3981482)
+texture = ExtResource("4_p0e0y")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 1152, 324)
+region_filter_clip_enabled = true
+
+[node name="5" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.7, 1)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/5"]
+texture_repeat = 2
+scale = Vector2(1, 1.3981482)
+texture = ExtResource("5_fcd5i")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 1152, 324)
+region_filter_clip_enabled = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
+position = Vector2(0, 11)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1163, 408)
+shape = SubResource("RectangleShape2D_8dqw3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(3479, 408)
+shape = SubResource("RectangleShape2D_8dqw3")
