@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://d4c8u11igggaw"]
+[gd_scene load_steps=12 format=4 uid="uid://d4c8u11igggaw"]
 
 [ext_resource type="PackedScene" uid="uid://nbp287neo663" path="res://personagem.tscn" id="1_te5bk"]
 [ext_resource type="Texture2D" uid="uid://d3uhvt1j2efx2" path="res://Cenarios/cenarioum/TILED_files/Tileset.png" id="2_r8gp0"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cnn7rsjnsgmaq" path="res://Cenarios/cenarioum/PNG/Background/1920x1080/÷2/Flora1_1920x1080÷2.png" id="4_0t6cl"]
 [ext_resource type="Texture2D" uid="uid://d3tnterecs221" path="res://Cenarios/cenarioum/PNG/Background/1920x1080/÷2/Clouds_1920x1080÷2.png" id="4_r5lqe"]
 [ext_resource type="Texture2D" uid="uid://cnrqy4susevc2" path="res://Cenarios/cenarioum/PNG/Background/1920x1080/÷2/Flora2_1920x1080÷2.png" id="5_r5lqe"]
+[ext_resource type="PackedScene" uid="uid://mr37b628r1bt" path="res://oponente_1.tscn" id="8_lrpgu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7pahk"]
 texture = ExtResource("2_r8gp0")
@@ -79,3 +80,5 @@ motion_mirroring = Vector2(960, 0)
 position = Vector2(-1, -4)
 texture = ExtResource("5_r5lqe")
 centered = false
+
+[node name="Oponente1" parent="." instance=ExtResource("8_lrpgu")]
