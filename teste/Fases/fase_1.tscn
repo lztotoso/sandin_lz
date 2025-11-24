@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dcqc786kseyei"]
+[gd_scene load_steps=11 format=3 uid="uid://dcqc786kseyei"]
 
 [ext_resource type="Texture2D" uid="uid://crwyke81v7m41" path="res://Fases/5/1.png" id="1_8dqw3"]
 [ext_resource type="Texture2D" uid="uid://b1wlbvwtxorig" path="res://Fases/5/2.png" id="2_3xv5d"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cl2k6v0dbqrq8" path="res://Fases/5/5.png" id="5_fcd5i"]
 [ext_resource type="Texture2D" uid="uid://cqx26ji0qdycc" path="res://Fases/5/6.png" id="7_3xv5d"]
 [ext_resource type="PackedScene" uid="uid://nbp287neo663" path="res://personagem.tscn" id="7_i3ps2"]
+[ext_resource type="Script" uid="uid://bw05urus44iib" path="res://Fases/chao_generator.gd" id="8_fn3an"]
+[ext_resource type="Texture2D" uid="uid://c8b7nghl27ym7" path="res://Fases/5/6- com arvore.png" id="9_p0e0y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8dqw3"]
 size = Vector2(2322, 45.5)
@@ -84,17 +86,15 @@ region_rect = Rect2(0, 0, 1152, 324)
 region_filter_clip_enabled = true
 
 [node name="6" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.7, 1)
+position = Vector2(2, 0)
+motion_scale = Vector2(1.2, 1)
 motion_mirroring = Vector2(1152, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/6"]
-texture_repeat = 2
-scale = Vector2(1, 1.3981482)
-texture = ExtResource("7_3xv5d")
-centered = false
-region_enabled = true
-region_rect = Rect2(0, 0, 1152, 324)
-region_filter_clip_enabled = true
+[node name="chao_generator" type="Node2D" parent="ParallaxBackground/6"]
+script = ExtResource("8_fn3an")
+textura_A = ExtResource("7_3xv5d")
+textura_B = ExtResource("9_p0e0y")
+largura_tile = 576
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0, 11)
